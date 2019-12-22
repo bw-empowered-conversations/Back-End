@@ -1,6 +1,6 @@
 const router     = require( 'express' ).Router();
-const Users      = require( '../../data/models/user-models'  );
-const restricted = require( './auth/auth-middleware'         );
+const Users      = require( '../../data/models/user-models' );
+const restricted = require( '../auth/auth-middleware'       );
 
 router.get( '/', restricted, ( req, res ) => {
   Users.find()
