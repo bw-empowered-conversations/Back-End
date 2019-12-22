@@ -4,6 +4,7 @@ const bcrypt = require( 'bcryptjs'     );
 const jwt    = require( 'jsonwebtoken' );
 
 const Users  = require( '../../data/models/user-models' );
+const restricted = require( './auth-middleware'         );
 
 router.post( '/register', ( req, res ) => {
   const user    = req.body;
@@ -35,7 +36,7 @@ router.post( '/login', ( req, res ) => {
     .catch( error => { res.status( 500 ).json( error ); } );
 } );
 
-router.get( '/logout', ( req, res ) =>
+router.get( '/logout', restricted, ( req, res ) =>
   req.session ?
     req.session.destroy( error => {
       error ?
