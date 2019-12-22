@@ -36,16 +36,14 @@ router.post( '/login', ( req, res ) => {
     .catch( error => { res.status( 500 ).json( error ); } );
 } );
 
-router.get( '/logout', restricted, ( req, res ) =>
-  req.session ?
+router.get( '/logout', restricted, ( req, res ) =>{
+  return req.session ?
     req.session.destroy( error => {
       error ?
-        res.status( 500 ).json( { message: 'You can chekout any time you like but you can never leave!!' } )
-      : res.status( 200 ).json( { message: 'Logged out' } ) } )
-  : req.token ?
-      ( req.token = null, res.status( 200 ).json( { message: 'Token revoked. Logged out' } ) )
-      : res.status( 200 ).json( { message: 'Successfully logged out' } )
-);
+        res.status( 500 ).json( { error: error } )
+      : res.status( 200 ).json( { message: 'Successfully logged out' } ) } )
+  : res.status( 200 ).json( { message: 'Successfully logged out' } )
+} );
 
 function signToken( user ){
   const secret  = process.env.JWT_SECRET || 'not very secret in a public repo';
