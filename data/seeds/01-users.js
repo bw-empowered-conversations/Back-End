@@ -1,6 +1,8 @@
 const bcrypt = require( 'bcryptjs' );
-
-exports.seed = knex => {
+//===============================================================> EOF
+// Seed Users Table
+//=====================>
+exports.seed = function( knex ) {
   const pass = bcrypt.hashSync( 'pass', 14 );
 
   return knex( 'users' )
@@ -8,3 +10,4 @@ exports.seed = knex => {
       { username: "testuser", password: pass }
     ] );
 };
+//===============================================================> EOF
