@@ -1,5 +1,7 @@
 const jwt = require( 'jsonwebtoken' );
-
+//===============================================================>
+// Middleware to handle authorization restrictions
+//=====================> Export Middleware
 module.exports = ( req, res, next ) => {
   const { token } = req.headers;
 
@@ -14,3 +16,4 @@ module.exports = ( req, res, next ) => {
   else {
     res.status( 400 ).json( { message: "Please login and try again" } ); }
 };
+//===============================================================> EOF

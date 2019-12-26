@@ -1,7 +1,7 @@
-// Update with your config settings.
-
 module.exports = {
-
+  //=====================>
+  // Development
+  //=====================>
   development: {
     client: 'sqlite3',
     useNullAsDefault: true,
@@ -20,8 +20,9 @@ module.exports = {
       directory: './data/seeds'
     }
   },
-
-
+  //=====================>
+  // Production
+  //=====================>
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
@@ -36,5 +37,5 @@ module.exports = {
       directory: './data/seeds'
     }
   }
-
 };
+//===============================================================> EOF
