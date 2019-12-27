@@ -56,7 +56,7 @@ Should return a json object:
 ---
 **_POST_**
 
-To register a new user, send a json object in the body:
+To register a new user, send an object in the body:
 ```js
 .post( 'https://bw-empowered-conversations.herokuapp.com/api/auth/register', { username: "user", password: "pass" } )
 ```
@@ -67,7 +67,7 @@ To register a new user, send a json object in the body:
 
 :information_source: **_Recommend checking for user details after login and prompting to fill out the details before continuing if none exist_**
 
-To Login a new user, send a json object in the body:
+To Login a new user, send an object in the body:
 ```js
 .post( 'https://bw-empowered-conversations.herokuapp.com/api/auth/login', { username: "user", password: "pass" } )
 ```
@@ -104,11 +104,11 @@ Should return a json user object containing the user **id** and **username**:
 
 :exclamation: *Requires authorization token.*
 
-Also requires a json object in the body which only contains the information to be changed (username and/or password).  If the password changes, the new password will be hashed before being stored in the database:
+Also requires an object in the body which only contains the information to be changed (username and/or password).  If the password changes, the new password will be hashed before being stored in the database:
 ```js
 .put( 'https://bw-empowered-conversations.herokuapp.com/api/user', { password: "newpass" } )
 ```
-Should return a json object containing the user **id** and **username**:
+Should return a json object of the user, without the password hash:
 ```json
 {
   "id": 2,
@@ -174,14 +174,13 @@ Should return an array of contacts, where each contact is a json object:
 
 :exclamation: *Requires authorization token.*
 
-To add a contact to the user's contact list, send a json object in the body:
-```json
-const contact = {
-	"name": "contact name",
-	"phone": "555-555-6677"
-};
-```
+To add a contact to the user's contact list, send an object in the body:
 ```js
+const contact = {
+	name: "contact name",
+	phone: "555-555-6677"
+};
+
 .post( 'https://bw-empowered-conversations.herokuapp.com/api/user/contacts', contact )
 ```
 Should return a json object of the added contact:
@@ -202,7 +201,7 @@ Should return a json object of the added contact:
 
 :exclamation: *Requires contact_id in header.*
 
-To update a specific contact, send the contact_id in the headers and the json object key:value pair to be updated:
+To update a specific contact, send the contact_id in the headers and the object key:value pair to be updated:
 ```js
 .put( 'https://bw-empowered-conversations.herokuapp.com/api/user/contacts', { phone: "555-555-9988" }, { headers: { contact_id: 3 } } )
 ```
@@ -269,15 +268,14 @@ Should return a json object of the user's details:
 
 :exclamation: *Requires authorization token.*
 
-To add details for the user, send a json object in the body:
-```json
-const details = {
-	"name": "random user",
-	"phone": "555-555-5555",
-	"email": "user23@nomail.com"
-};
-```
+To add details for the user, send an object in the body:
 ```js
+const details = {
+	name: "random user",
+	phone: "555-555-5555",
+	email: "user23@nomail.com"
+};
+
 .post( 'https://bw-empowered-conversations.herokuapp.com/api/user/details', details )
 ```
 Should return a json object of the added details:
@@ -297,7 +295,7 @@ Should return a json object of the added details:
 
 :exclamation: *Requires authorization token.*
 
-To update user's details, send a json object key:value pair to be updated:
+To update user's details, send an object with the key:value pair to be updated:
 ```js
 .put( 'https://bw-empowered-conversations.herokuapp.com/api/user/details', { phone: "555-555-0011" } )
 ```
