@@ -3,7 +3,7 @@ const jwt = require( 'jsonwebtoken' );
 // Middleware to handle authorization restrictions
 //=====================> Export Middleware
 module.exports = ( req, res, next ) => {
-  const { token } = req.headers;
+  const token = req.headers.token || req.headers.authorization;
 
   if ( token ) {
     const secret = process.env.JWT_SECRET || 'not very secret in a public repo';

@@ -45,20 +45,22 @@ router.get( '/details', restricted, ( req, res ) => {
 // Posts
 //=====================> Post User's New Contact Info
 router.post( '/contacts', restricted, ( req, res ) => {
-  const { id }  = req.token;
-  const contact = req.body;
+  const { id }    = req.token;
+  const contact   = req.body;
+  contact.user_id = id;
 
-  Users.addContact( id, contact )
+  Users.addContact( contact )
     .then ( user  => { res.status( 200 ).json( user ); } )
     .catch( error => { res.status( 500 )
         .json( { error: 'There was a problem adding the contact to the database' } ); } );
 } );
 //=====================> Post User's New Details
 router.post( '/details', restricted, ( req, res ) => {
-  const { id }  = req.token;
-  const details = req.body;
+  const { id }    = req.token;
+  const details   = req.body;
+  details.user_id = id;
 
-  Users.addDetails( id, details )
+  Users.addDetails( details )
     .then ( user  => { res.status( 200 ).json( user ); } )
     .catch( error => { res.status( 500 )
         .json( { error: 'There was a problem adding the details to the database' } ); } );

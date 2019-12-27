@@ -26,7 +26,7 @@ async function addUser( user ) {
   return findByID( id );
 }
 //=====================> Add Contact
-async function addContact( id, contact ) {
+async function addContact( contact ) {
   const [ contact_id ] = await db( 'contacts' )
     .insert( contact, 'id' );
   return db( 'contacts' )
@@ -34,10 +34,11 @@ async function addContact( id, contact ) {
       , 'id as contact_id'
       , 'name as contact_name'
       , 'phone as contact_phone')
-    .where( 'id', contact_id );
+    .where( 'id', contact_id )
+    .first();
 }
 //=====================> Add Details
-async function addDetails( id, details ) {
+async function addDetails( details ) {
   const [ details_id ] = await db( 'user_details' )
     .insert( details, 'id' );
   return db( 'user_details' )
@@ -46,7 +47,8 @@ async function addDetails( id, details ) {
       , 'name as user_name'
       , 'phone as user_phone'
       , 'email as user_email')
-    .where( 'id', details_id );
+    .where( 'id', details_id )
+    .first();
 }
 //===============================================================>
 // Finds
@@ -59,7 +61,8 @@ function findBy( filter ) {
 function findByID( id ) {
   return db( 'users' )
     .select( 'id', 'username' )
-    .where ( { id }  );
+    .where ( { id }  )
+    .first();
 }
 //=====================> Find Details
 function findDetails( id ) {
@@ -68,7 +71,8 @@ function findDetails( id ) {
       , 'ud.name as user_name'
       , 'ud.phone as user_phone'
       , 'ud.email as user_email' )
-    .where( 'ud.user_id', id );
+    .where( 'ud.user_id', id )
+    .first();
 }
 //=====================> Find Contacts
 function findContacts( id ){
@@ -101,6 +105,7 @@ function updateContact( id, changes, contact_id ) {
           , 'name as contact_name'
           , 'phone as contact_phone')
         .where( 'id', contact_id )
+        .first()
     );
 }
 //=====================> Update Details
@@ -116,6 +121,7 @@ function updateDetails( id, changes ) {
           , 'ud.phone as user_phone'
           , 'ud.email as user_email')
         .where( 'ud.user_id', id )
+        .first()
     );
 }
 //===============================================================>
