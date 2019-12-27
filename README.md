@@ -318,7 +318,7 @@ Should return a json object of the contact that was updated:
 
 :exclamation: *Requires authorization token.*
 
-:warning: *Deleting the user's details should trigger the frontend to prompt for new details*
+:warning: *Deleting the user's details should trigger the frontend to prompt for new details, or not using this endpoint in favor of the update above*
 
 To delete the user's details:
 ```js
