@@ -34,7 +34,7 @@ And inside the calling function:
 <br />
 
 ## Base Server Test
----
+
 **_GET_**
 
 To test that the server is up and running:
@@ -53,16 +53,18 @@ Should return a json object:
 
 ## Auth
 ### Register
----
+#
 **_POST_**
 
 To register a new user, send an object in the body:
 ```js
 .post( 'https://bw-empowered-conversations.herokuapp.com/api/auth/register', { username: "user", password: "pass" } )
 ```
-#
-### Login
 ---
+<br />
+
+### Login
+#
 **_POST_**
 
 :information_source: **_Recommend checking for user details after login and prompting to fill out the details before continuing if none exist_**
@@ -78,12 +80,12 @@ Should return a json welcome message containing the **token**:
   "message": "Welcome user!"
 }
 ```
-#
+---
 <br />
 
 ## User
 ### Get the logged in user
----
+#
 **_GET_**
 
 :exclamation: *Requires authorization token.*:
@@ -97,9 +99,11 @@ Should return a json user object containing the user **id** and **username**:
   "username": "user"
 }
 ```
-#
-### Update a user's info
 ---
+<br />
+
+### Update a user's info
+#
 **_PUT_**
 
 :exclamation: *Requires authorization token.*
@@ -115,9 +119,11 @@ Should return a json object of the user, without the password hash:
   "username": "user"
 }
 ```
-#
-### Delete a user
 ---
+<br />
+
+### Delete a user
+#
 **_DELETE_**
 
 :exclamation: *Requires authorization token.*
@@ -136,12 +142,12 @@ Should return a json object containing a removed message with an embedded json o
   }
 }
 ```
-#
+---
 <br />
 
 ## Contacts
 ### Get user's contacts
----
+#
 **_GET_**
 
 :exclamation: *Requires authorization token.*
@@ -167,9 +173,11 @@ Should return an array of contacts, where each contact is a json object:
   }
 ]
 ```
-#
-### Add a contact
 ---
+<br />
+
+### Add a contact
+#
 **_POST_**
 
 :exclamation: *Requires authorization token.*
@@ -192,9 +200,11 @@ Should return a json object of the added contact:
   "contact_phone": "555-555-9999"
 }
 ```
-#
-### Update a contact
 ---
+<br />
+
+### Update a contact
+#
 **_PUT_**
 
 :exclamation: *Requires authorization token.*
@@ -214,9 +224,11 @@ Should return a json object of the contact that was updated:
   "contact_phone": "555-555-9988"
 }
 ```
-#
-### Delete a contact
 ---
+<br />
+
+### Delete a contact
+#
 **_DELETE_**
 
 :exclamation: *Requires authorization token.*
@@ -238,12 +250,12 @@ Should return a json object containing a removed message with an embedded json o
   }
 }
 ```
-#
+---
 <br />
 
 ## Details
 ### Get user's details
----
+#
 **_GET_**
 
 :exclamation: *Requires authorization token.*
@@ -261,9 +273,11 @@ Should return a json object of the user's details:
   "user_email": "user23@nomail.com"
 }
 ```
-#
-### Add details
 ---
+<br />
+
+### Add details
+#
 **_POST_**
 
 :exclamation: *Requires authorization token.*
@@ -288,9 +302,11 @@ Should return a json object of the added details:
   "user_email": "user23@nomail.com"
 }
 ```
-#
-### Update user's details
 ---
+<br />
+
+### Update user's details
+#
 **_PUT_**
 
 :exclamation: *Requires authorization token.*
@@ -309,9 +325,11 @@ Should return a json object of the contact that was updated:
   "user_email": "user23@nomail.com"
 }
 ```
-#
-### Delete user details
 ---
+<br />
+
+### Delete user details
+#
 **_DELETE_**
 
 :exclamation: *Requires authorization token.*
