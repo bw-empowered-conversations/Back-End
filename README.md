@@ -39,7 +39,7 @@ And inside the calling function:
 
 To test that the server is up and running:
 ```js
-    .get( https://bw-empowered-conversations.herokuapp.com/api )
+.get( 'https://bw-empowered-conversations.herokuapp.com/api' )
 ```
 Should return a json object:
 ```json
