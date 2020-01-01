@@ -49,7 +49,7 @@ router.get( '/logout', restricted, ( req, res ) => {
 function signToken( user ) {
   const secret  = process.env.JWT_SECRET || 'not very secret in a public repo';
 
-  const payload = { id: user.id, username: user.username };
+  const payload = { id: user.id };
   const options = { expiresIn: '1h' };
 
   return jwt.sign ( payload, secret, options );
