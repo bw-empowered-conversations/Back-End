@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ]
+  },
   "scripts": {
     "test": "cross-env DB_ENV=testing jest --watch",
     "server": "cross-env DB_ENV=development nodemon index.js",
